@@ -55,9 +55,15 @@ function mousePressed() {
     }
   
     else if (state === 2) {
-      soundFile.play(); // play the result!
+      var len = soundFile.duration();
+      setInterval(function(){
+        soundFile.play()
+
+      },len*1000)
+        
+      ; // play the result!
       saveSound(soundFile, 'mySound.wav'); // save file
-      state++;
+      state = 0;
     }
   }
 
