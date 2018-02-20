@@ -6,8 +6,6 @@ exports.up = function (knex, Promise) {
         table.string("lastname");
         table.string("email");
         table.string("googleid");
-        table.string("facebookid");
-
         table.timestamps(true, true);
     });
 };
