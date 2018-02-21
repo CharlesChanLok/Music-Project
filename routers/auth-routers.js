@@ -14,8 +14,9 @@ router.get('/logout', (req, res) => {
 });
 
 //auth with goolge
-router.get('/google', passport.authenticate('google', {
-    scope: ['profile']
+router.get('/google', passport.authenticate('google', { scope: [
+    'https://www.googleapis.com/auth/plus.login',
+    'https://www.googleapis.com/auth/plus.profile.emails.read'] 
 }));
 
 

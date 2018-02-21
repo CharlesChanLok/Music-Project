@@ -1,10 +1,18 @@
 require('dotenv').config();
 
 const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const NODE_ENV = process.env.NODE_ENV || 'development'
 const knexFile = require('../../knexfile')[NODE_ENV]
 const knex = require('knex')(knexFile)
+
+// passport.serializeUser((user, done) => {
+//     done(null, user)
+// })
+
+// passport.deserializeUser((email, done) => {
+//     done(null, email)
+// })
 
 passport.use(new GoogleStrategy(
     {
@@ -16,23 +24,29 @@ passport.use(new GoogleStrategy(
         let firstName = profile.name.givenName;
         let lastName = profile.name.familyName;
         let googleID = profile.id;
+        let gmail = profile.emails[0].value;
+
         // console.log(typeof firstName);
         // console.log(typeof lastName);
         // console.log(typeof googleID);
         // console.log(firstName);
         // console.log(lastName);
         // console.log(googleID);
-        // console.log(profile); 
-        let query = knex.select("googleid").from("users").where("googleid", googleID);
-        query.then((rows) => {
-            if (rows.length === 0) {
-                knex("users").insert({ firstname: firstName, lastname: lastName, googleid: googleID })
-                    .then((content) => {
-                        return;
+        //  console.log(profile); 
+        let query = knex.select("gmail").from("users").where("gmail", gmail);
+        query.then((user) => {
+            // if the user never register, add the user to the db
+            if (user.length === 0) {
+                knex("users").insert({ firstname: firstName, lastname: lastName, gmail: gmail, googleid: googleID })
+                    .then(() => {
+                        console.log(firstName);
+                        console.log(`Created users: ${firstName} ${lastName} gmail: ${gmail} GoogleID: ${googleID}`);
+                        // done(null, googleEmail);
                     })
             }
             else {
-                console.log(rows);
+                console.log(user)
+                done(null, user);
             }
         }).catch((err) => {
             console.log(err)
