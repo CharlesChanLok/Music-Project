@@ -6,7 +6,7 @@ exports.up = function (knex, Promise) {
         table.string("lastname");
         table.string("email");
         table.string("googleid");
-        table.timestamps(true, true);
+        table.timestamps(false, true);
     });
 };
 
