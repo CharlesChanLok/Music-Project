@@ -6,13 +6,20 @@ const NODE_ENV = process.env.NODE_ENV || 'development'
 const knexFile = require('../../knexfile')[NODE_ENV]
 const knex = require('knex')(knexFile)
 
-// passport.serializeUser((user, done) => {
-//     done(null, user)
-// })
+passport.serializeUser((user, done) => {
+    console.log(user);
+    done(null, user[0].id)
+})
 
-// passport.deserializeUser((email, done) => {
-//     done(null, email)
-// })
+passport.deserializeUser((id, done) => {
+    let query = knex.select("*").from("users").where("id", id);
+    query.then((user) => {
+        done(null, user)
+    })
+        .catch((err) => {
+            done(err);
+        })
+})
 
 passport.use(new GoogleStrategy(
     {
@@ -36,20 +43,22 @@ passport.use(new GoogleStrategy(
         let query = knex.select("gmail").from("users").where("gmail", gmail);
         query.then((user) => {
             // if the user never register, add the user to the db
-            if (user.length === 0) {
-                knex("users").insert({ firstname: firstName, lastname: lastName, gmail: gmail, googleid: googleID })
+            if (!user[0]) {
+                knex("users").insert([{ "firstname": firstName, "lastname": lastName, "gmail": gmail, "googleid": googleID }])
                     .then(() => {
-                        console.log(firstName);
+                        let query = knex.select("*").from("users").where("gmail", gmail);
+                        query.then((user) => {
                         console.log(`Created users: ${firstName} ${lastName} gmail: ${gmail} GoogleID: ${googleID}`);
-                        // done(null, googleEmail);
+                         done(null, user);
+                        })
                     })
             }
             else {
-                console.log(user)
-                done(null, user);
+                 done(null, user);
             }
         }).catch((err) => {
             console.log(err)
+            done(err);
         });
     })
 );
