@@ -1,0 +1,23 @@
+<nav>
+    <ul>
+        <li>
+            <a href="/">Homepage</a>
+        </li>
+        {{#if user}}
+            <li>
+                <a href="/auth/logout">Logout</a>
+            </li>
+            {{else}}
+            <li>
+                <a href="/auth/login">Login</a>
+            </li>
+            
+            {{/if}}
+    </ul>
+</nav>
+<header>
+    <h1>{{user.firstname}}'s Profile</h1>
+</header>
+<main>
+    <p>Testing</p>
+</main>

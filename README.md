@@ -5,21 +5,15 @@ create .env file in the directory:
 GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
 
-#Database Initialization
+#Initialization
 DB_NAME=
 DB_USERNAME=
 DB_PASSWORD=
-
-#session
-SESSION_SECRET=
-
 
 NODE_ENV=
 ---default=development---
 PORT=
 ---default=3000---
-
-
 ```
 
 ```

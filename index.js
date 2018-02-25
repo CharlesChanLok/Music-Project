@@ -4,7 +4,10 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const RedisStore = require('connect-redis')(session);
+//Router
 const authRouters = require('./routers/auth-routers');
+const profileRouters = require('./routers/profile-routers');
+
 const passportSetup = require('./config/strategies/google-strategy');
 const passport = require('passport');
 var exphbs = require('express-handlebars');
@@ -31,6 +34,7 @@ app.set('view engine', '.hbs');
 app.use(session({
     store: new RedisStore(),
     secret: process.env.SESSION_SECRET,
+    cookie: { "path": '/', "httpOnly": true, "secure": false,  "maxAge": null },
     resave: false,
     saveUninitialized: false
 }))
@@ -40,9 +44,11 @@ app.use(passport.session())
 
 //set up routes
 app.use('/auth', authRouters);
+app.use('/profile', profileRouters);
 
 app.get('/', (req, res) => {
-    res.render('home');
+    res.render('home', {user: req.user});
+    
 })
 
 app.listen(port, () => {
