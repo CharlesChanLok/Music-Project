@@ -3,36 +3,51 @@ var _createClass = function () { function defineProperties(target, props) { for 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
   
   var instruments = [{
-    name: 'KICK',
+    name: 'BOOM',
     source: new Howl({
-      src: ['https://raw.githubusercontent.com/michaelkoelewijn/SallyApp/master/static/wav/KICK.wav']
-    })
-  }, {
-    name: 'SNARE',
-    source: new Howl({
-      src: ['https://raw.githubusercontent.com/michaelkoelewijn/SallyApp/master/static/wav/SNARE.wav']
-    })
-  }, {
-    name: 'TOM1',
-    source: new Howl({
-      src: ['https://raw.githubusercontent.com/michaelkoelewijn/SallyApp/master/static/wav/TOM1.wav']
-    })
-  }, {
-    name: 'TOM2',
-    source: new Howl({
-      src: ['https://raw.githubusercontent.com/michaelkoelewijn/SallyApp/master/static/wav/TOM2.wav']
+      src: ['./sounds/boom.wav']
     })
   }, {
     name: 'CLAP',
     source: new Howl({
-      src: ['https://raw.githubusercontent.com/michaelkoelewijn/SallyApp/master/static/wav/CLAP.wav']
+      src: ['./sounds/clap.wav']
     })
   }, {
     name: 'HIHAT',
     source: new Howl({
-      src: ['https://raw.githubusercontent.com/michaelkoelewijn/SallyApp/master/static/wav/HIHAT.wav']
+      src: ['./sounds/hihat.wav']
     })
-  }];
+  }, {
+    name: 'KICK',
+    source: new Howl({
+      src: ['./sounds/kick.wav']
+    })
+  }, {
+    name: 'OPENHAT',
+    source: new Howl({
+      src: ['./sounds/openhat.wav']
+    })
+  }, {
+    name: 'RIDE',
+    source: new Howl({
+      src: ['./sounds/ride.wav']
+    })
+  }, {
+    name: 'SNARE',
+    source: new Howl({
+      src: ['./sounds/snare.wav']
+    })
+  }, {
+    name: 'TINK',
+    source: new Howl({
+      src: ['./sounds/tink.wav']
+    })
+  }, {
+    name: 'TOM',
+    source: new Howl({
+      src: ['./sounds/tom.wav']
+    })
+  } ];
   
   var ROWS = instruments.length;
   var NOTES = 16;
@@ -106,34 +121,49 @@ var _createClass = function () { function defineProperties(target, props) { for 
           //Play row
           if (current.hasClass('active')) {
             switch (current.parent().data('instrument')) {
-              case 'KICK':
+              case 'BOOM':
                 {
                   instruments[0].source.play();
                   break;
                 }
-              case 'SNARE':
+              case 'CLAP':
                 {
                   instruments[1].source.play();
                   break;
                 }
-              case 'TOM1':
+              case 'HIHAT':
                 {
                   instruments[2].source.play();
                   break;
                 }
-              case 'TOM2':
+              case 'KICK':
                 {
                   instruments[3].source.play();
                   break;
                 }
-              case 'CLAP':
+              case 'OPENHAT':
                 {
                   instruments[4].source.play();
                   break;
                 }
-              case 'HIHAT':
+              case 'RIDE':
                 {
                   instruments[5].source.play();
+                  break;
+                }
+              case 'SNARE':
+                {
+                  instruments[6].source.play();
+                  break;
+                }
+              case 'TINK':
+                {
+                  instruments[7].source.play();
+                  break;
+                }
+              case 'TOM':
+                {
+                  instruments[8].source.play();
                   break;
                 }
             }
