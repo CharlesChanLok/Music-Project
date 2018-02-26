@@ -13,7 +13,7 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser((id, done) => {
     console.log("deserialize:" + id);
-    let query = knex.select("*").from("users_google").where("id", id);
+    let query = knex.select("*").from("google_users").where("id", id);
     query.then((user) => {
         done(null, user)
     })
@@ -41,14 +41,14 @@ passport.use(new GoogleStrategy(
         // console.log(lastName);
         // console.log(googleID);
         // console.log(profile); 
-        let query = knex.select("*").from("users_google").where("gmail", gmail);
+        let query = knex.select("*").from("google_users").where("gmail", gmail);
         query.then((user) => {
             //console.log(user);
             // if the user never register, add the user to the db
             if (!user[0]) {
-                knex("users_google").insert([{ "firstname": firstName, "lastname": lastName, "gmail": gmail, "googleid": googleID }])
+                knex("google_users").insert([{ "firstname": firstName, "lastname": lastName, "gmail": gmail, "googleid": googleID }])
                     .then(() => {
-                        let query = knex.select("*").from("users_google").where("gmail", gmail);
+                        let query = knex.select("*").from("google_users").where("gmail", gmail);
                         query.then((user) => {
                             console.log(`Created users: ${firstName} ${lastName} gmail: ${gmail} GoogleID: ${googleID}`);
                             done(null, user);
