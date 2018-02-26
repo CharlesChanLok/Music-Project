@@ -7,6 +7,7 @@ const RedisStore = require('connect-redis')(session);
 //Router
 const authRouters = require('./routers/auth-routers');
 const profileRouters = require('./routers/profile-routers');
+const instrumentRouters = require('./routers/instrument-routers');
 
 const passportSetup = require('./config/strategies/google-strategy');
 const passport = require('passport');
@@ -29,6 +30,7 @@ app.engine('.hbs', exphbs({
 );
 
 app.set('view engine', '.hbs');
+app.use(express.static('public'));
 
 //session
 app.use(session({
@@ -45,6 +47,7 @@ app.use(passport.session())
 //set up routes
 app.use('/auth', authRouters);
 app.use('/profile', profileRouters);
+app.use('/', instrumentRouters);
 
 app.get('/', (req, res) => {
     res.render('home', {user: req.user});

@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css?family=Maven+Pro");
+  :root {
+    --sq-main-color: #ffdc00;
+  }
+  
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #000;
+    font-family: 'Maven Pro', sans-serif;
+  }
+  
+  .sequencizer-wrap {
+    display: table;
+  }
+  
+  label {
+    color: #FFF;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  #play {
+    margin: 30px 0;
+    display: block;
+    padding: 15px;
+  }
+  
+  .sq-row {
+    display: flex;
+    padding: 10px 0;
+  }
+  .sq-row + .sq-row {
+    border-top: 1px solid #535353;
+  }
+  
+  .sq-instrument {
+    display: block;
+    color: var(--sq-main-color);
+    width: 180px;
+    padding: 20px 30px;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+  }
+  
+  .sq-note {
+    position: relative;
+    display: block;
+    width: 60px;
+    height: 60px;
+    background-color: #5c5c5c;
+    margin: 1px;
+    cursor: pointer;
+  }
+  .sq-note.active {
+    background-color: #a5a5a5;
+  }
+  .sq-note.step {
+    background-color: #FFF;
+  }
+  .sq-note.active.step:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    content: '';
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-color: var(--sq-main-color);
+  }
+  .is-muted .sq-note {
+    opacity: 0.5;
+  }
+  
+  .controls {
+    display: table;
+    margin: 0 0 0 auto;
+  }
+  .controls label, .controls input {
+    display: inline-block;
+    vertical-align: middle;
+    color: var(--sq-main-color);
+  }
+  .controls label {
+    font-size: 28px;
+    line-height: 1;
+  }
+  .controls input {
+    margin: 0 10px;
+    width: 45px;
+    background-color: transparent;
+    padding: 0 5px;
+    border: 0;
+    font-size: 20px;
+    text-align: center;
+  }
