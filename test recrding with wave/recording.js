@@ -1,7 +1,5 @@
 var mic, recorder, buttonRecord, buttonStop, buttonSave;
-
 let volhistory = [];
-
 var state = 0;
 
 function setup() {
@@ -66,6 +64,7 @@ function draw () {
 
 
 function BtRecord() {
+  volhistory.length = 0;
   recorder.record(soundFile);
   loop()
 }
@@ -77,6 +76,7 @@ function BtStop() {
 
 function BtSave() {
   saveSound(soundFile, 'mySound.wav');
+  background(0)
 }
 
 
