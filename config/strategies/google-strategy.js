@@ -7,19 +7,20 @@ const knexFile = require('../../knexfile')[NODE_ENV]
 const knex = require('knex')(knexFile)
 
 passport.serializeUser((user, done) => {
-    console.log("serialize:" + user[0].id);
-    done(null, user[0].id)
+    console.log("serialize:" + user);
+    done(null, user)
 })
 
-passport.deserializeUser((id, done) => {
+passport.deserializeUser((user, done) => {
     console.log("deserialize:" + id);
-    let query = knex.select("*").from("google_users").where("id", id);
-    query.then((user) => {
-        done(null, user)
-    })
-        .catch((err) => {
-            done(err);
-        })
+    done(null, user);
+    //let query = knex.select("*").from("google_users").where("id", id);
+    //query.then((user) => {
+    //    done(null, user)
+    //})
+    //    .catch((err) => {
+    //        done(err);
+    //    })
 })
 
 passport.use(new GoogleStrategy(
@@ -41,14 +42,14 @@ passport.use(new GoogleStrategy(
         // console.log(lastName);
         // console.log(googleID);
         // console.log(profile); 
-        let query = knex.select("*").from("google_users").where("gmail", gmail);
-        query.then((user) => {
+        let query = knex.first("*").from("google_users").where("gmail", gmail);
+        query.then((guser) => {
             //console.log(user);
             // if the user never register, add the user to the db
-            if (!user[0]) {
+            if (!guser) {
                 knex("google_users").insert([{ "firstname": firstName, "lastname": lastName, "gmail": gmail, "googleid": googleID }])
                     .then(() => {
-                        let query = knex.select("*").from("google_users").where("gmail", gmail);
+                        let query = knex.first("*").from("google_users").where("gmail", gmail);
                         query.then((user) => {
                             console.log(`Created users: ${firstName} ${lastName} gmail: ${gmail} GoogleID: ${googleID}`);
                             done(null, user);
@@ -56,7 +57,7 @@ passport.use(new GoogleStrategy(
                     })
             }
             else {
-                    done(null, user);
+                    done(null, guser);
             }
         }).catch((err) => {
             console.log(err)

@@ -4,9 +4,9 @@ exports.up = function (knex, Promise) {
         table.increments();
         table.string("firstname");
         table.string("lastname");
-        table.string('account')
+        table.string('email')
         table.string("password");
-        table.timestamps(false, true);
+        table.timestamps(true, false);
     });
 };
 

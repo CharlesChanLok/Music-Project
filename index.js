@@ -15,9 +15,7 @@ const instrumentRouters = require('./routers/instrument-routers');
 const passportSetup = require('./config/strategies/google-strategy');
 const passport = require('passport');
 
-
 var exphbs = require('express-handlebars');
-
 
 var app = express();
 
@@ -48,18 +46,22 @@ app.use(session({
     saveUninitialized: false
 }))
 
+
 app.use(passport.initialize())
 app.use(passport.session())
 
 //set up routes
-app.use('/auth', authRouters);
-app.use('/', localAuthRouters)
 app.use('/profile', profileRouters);
+app.use('/auth', authRouters);
+app.use('/local', localAuthRouters)
 app.use('/', instrumentRouters);
 
 app.get('/', (req, res) => {
     res.render('home', {user: req.user});
-    
+})
+
+app.get('/error', (req, res) => {
+    res.render('error');
 })
 
 app.listen(port, () => {

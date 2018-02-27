@@ -11,8 +11,8 @@ function isAuthenticated(req, res, next) {
 }
 //login
   router.post('/login', passport.authenticate('local-login', {
-    successRedirect: '/profile',
-    failureRedirect: 'back'
+    successRedirect: '/instrument',
+    failureRedirect: '/error'
   }));
 
 //signup
@@ -20,10 +20,10 @@ function isAuthenticated(req, res, next) {
     res.render('signup');
   });
 
-  // router .post('/signup', passport.authenticate('local-login', {
-  //   successRedirect: '/profile',
-  //   failureRedirect: 'back'
-  // }));
+  router.post('/signup', passport.authenticate('local-register', {
+    successRedirect: '/instrument',
+    failureRedirect: '/error'
+  }));
 
 
 module.exports = router;

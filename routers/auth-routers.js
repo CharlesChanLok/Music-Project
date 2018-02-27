@@ -31,8 +31,11 @@ router.get('/google', passport.authenticate('google', { scope: [
 
 
 //route for google to redirect 
-router.get('/google/callback', passport.authenticate('google'), (req, res) => {
-    res.redirect('/profile');
+router.get('/google/callback', passport.authenticate('google', {
+    failureRedirect: "/"
+}), (req, res) => {
+   // res.redirect('/profile');
+    res.render('profile', { user: req.user[0] });
 })
 
 // router.get('/secret', isAuthenticated, (req, res) => {
