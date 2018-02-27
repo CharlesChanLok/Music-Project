@@ -12,7 +12,7 @@ passport.serializeUser((user, done) => {
 })
 
 passport.deserializeUser((user, done) => {
-    console.log("deserialize:" + id);
+    console.log("deserialize:" + user);
     done(null, user);
     //let query = knex.select("*").from("google_users").where("id", id);
     //query.then((user) => {

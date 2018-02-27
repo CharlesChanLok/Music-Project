@@ -35,11 +35,7 @@ router.get('/google/callback', passport.authenticate('google', {
     failureRedirect: "/"
 }), (req, res) => {
    // res.redirect('/profile');
-    res.render('profile', { user: req.user[0] });
+    res.render('profile', { user: req.user });
 })
-
-// router.get('/secret', isAuthenticated, (req, res) => {
-//   res.send('Here you go, a secret');
-// })
 
 module.exports = router;

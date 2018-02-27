@@ -14,10 +14,10 @@ function register(req, email, password, done) {
     }
     //check if it is a valid email
 
-    let query = knex.select("*").from("local_users").where("email", email);
+    let query = knex.first("*").from("local_users").where("email", email);
     query.then((user) => {
         console.log(user);
-        if (user[0]) {
+        if (user) {
             return done(null, false, { message: "Email already exists." });
         }
         bcrypt.hash(password, 12, (err, hash) => {
