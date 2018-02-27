@@ -1,4 +1,4 @@
-{{#if user}}
+ {{#if user}}
 <a href="/auth/logout">Logout</a>
 
 <h2>Music Station</h2>
@@ -12,9 +12,9 @@
 {{else}}
 
 <div class="limiter">
-    <div class="container-login100" style="background-image: url('images/musicins.jpg');">
+    <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
         <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
-            <form class="login100-form validate-form flex-sb flex-w">
+            <form  action="/local/login" method="post" class="login100-form validate-form flex-sb flex-w">
                 <span class="login100-form-title p-b-53">
                     Sign In With
                 </span>
@@ -27,19 +27,64 @@
                 <a href="/auth/google" class="btn-google m-b-20">
                     <img src="images/icons/icon-google.png" alt="GOOGLE"> Google
                 </a>
-                
-                <a href="/local/signup" class="txt2 bo1">
-                    Sign up now
-                </a>
+
+                <div class="container">
+                    <div class="row login-box">
+                        <div class="col-12 col-sm-6 align-self-start">
+                            <span class="txt1">
+                                Username
+                            </span>
+                        </div>
+                        <div class="col-12 col-sm-6 wrap-input100 validate-input" data-validate="Username is required">
+                            <input type="text" name="username" placeholder="Email">
+                            <span class="focus-input100"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row login-box">
+                        <div class="col-12 col-sm-6 align-self-start">
+                            <span class="txt1">
+                                Password
+                            </span>
+
+                            <a href="#" class="txt2">
+                                Forgot?
+                            </a>
+                        </div>
+                        <div class="col-12 col-sm-6 wrap-input100 validate-input" data-validate="Password is required">
+                            <input type="password" name="password" placeholder="Password">
+                            <span class="focus-input100"></span>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="container-login100-form-btn m-t-17">
+                   <button type="submit" class="login100-form-btn" >Sign In</button>
+                </div>
+
+                <div class="w-full text-center p-t-55">
+                    <span class="txt2">
+                        Not a member?
+                    </span>
+
+                    <a href="/local/signup" class="txt2 bo1">
+                        Sign up now
+                    </a>
+                </div>
+            </form>
         </div>
-        </form>
     </div>
-</div>
 </div>
 {{/if}}
 
-<form action="/local/login" method="post">
+
+
+{{!-- <form action="/local/login" method="post">
     <input type="text" name="username" placeholder="Email">
     <input type="password" name="password" placeholder="Password">
     <input type="submit" value="Login">
-</form>
+</form> --}}
