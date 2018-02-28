@@ -34,8 +34,8 @@ router.get('/google', passport.authenticate('google', { scope: [
 router.get('/google/callback', passport.authenticate('google', {
     failureRedirect: "/"
 }), (req, res) => {
-   // res.redirect('/profile');
-    res.render('profile', { user: req.user });
+    res.redirect('/instrument');
+    // res.render('profile', { user: req.user });
 })
 
 module.exports = router;
