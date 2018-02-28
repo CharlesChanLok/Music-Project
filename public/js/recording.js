@@ -77,7 +77,7 @@ function BtStop() {
 function BtSave() {
     var input = prompt("Please enter file name:", "Harry Potter");
     if (input == null || input == "") {
-        alert("Fuck you! File name!")
+        alert("File name is required!")
         return
     }   
         saveSound(soundFile, 'sound.wav');
