@@ -57,7 +57,7 @@ function draw () {
       }
   
       stroke(255, 0, 0);
-      line(volhistory.length, 0, volhistory.length, height*100)
+      line(volhistory.length, 0, volhistory.length, height*10000)
   }
   
 
@@ -75,8 +75,20 @@ function BtStop() {
 }
 
 function BtSave() {
+<<<<<<< HEAD
   saveSound(soundFile, 'mySound2.wav');
   background(0)
+=======
+  var input = prompt("Please enter your name:", "Harry Potter");
+  if (input == null || input == "") {
+      alert("Fuck you! File name!")
+      return
+  }   
+      saveSound(soundFile, 'sound.wav');
+      background(0);
+   
+>>>>>>> telford-b
 }
+
 
 

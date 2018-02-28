@@ -11258,17 +11258,17 @@ soundRecorder = function () {
     }
 
     // ------------------------------- added
-    var formData = new FormData();
-    var blob = new Blob([view], { type: "text/xml" });
+    // var formData = new FormData();
+    // var blob = new Blob([view], { type: "text/xml" });
 
-    formData.append("webmasterfile", blob);
-    formData.append("soundInfo", soundFile.buffer.duration);
+    // formData.append("webmasterfile", blob);
+    // formData.append("soundInfo", soundFile.buffer.duration);
     
 
-    var request = new XMLHttpRequest();
-    request.open("POST", "/save");
-    request.send(formData);
-    console.log(soundFile.buffer.duration)
+    // var request = new XMLHttpRequest();
+    // request.open("POST", "/save");
+    // request.send(formData);
+    // console.log(soundFile.buffer.duration)
 
     
     // $.ajax({
@@ -11284,7 +11284,7 @@ soundRecorder = function () {
     // request2.send(formData2);
 
     
-    // p5.prototype.writeFile([view], name, 'wav');
+    p5.prototype.writeFile([view], name, 'wav');
   };
   // helper methods to save waves
   function interleave(leftChannel, rightChannel) {

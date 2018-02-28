@@ -78,8 +78,14 @@ function BtStop() {
 }
 
 function BtSave() {
-    saveSound(soundFile, 'mySound.wav');
-    background(0)
+    var input = prompt("Please enter file name:", "Harry Potter");
+    if (input == null || input == "") {
+        alert("File name is required!")
+        return
+    }   
+        saveSound(soundFile, `${input}.wav`);
+        background(0);
+     
 }
 
 
