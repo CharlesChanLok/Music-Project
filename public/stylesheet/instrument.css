@@ -1,0 +1,23 @@
+.instrument-body { 
+    background-image: url('../images/bg-02.jpg');
+    background-size: cover;
+    width: 100%;
+    position: fixed;
+    min-height: 100vh;
+}
+
+.instrument-frame {
+    background-color: rgba(40, 40, 40, 0.8);
+    margin-top: 10px;
+}
+
+.piano-container {
+    position: relative;
+    height: 275px;
+}
+
+.sequencer-container {
+    position: relative;
+    min-width: 650px;
+}
+

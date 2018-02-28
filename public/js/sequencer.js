@@ -231,3 +231,6 @@ var _createClass = function () { function defineProperties(target, props) { for 
     new Sequencizer($('#sequencizer'))
 }
 );
+
+function jqclear()
+  {$( ".sq-note.active" ).click()}

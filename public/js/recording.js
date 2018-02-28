@@ -3,7 +3,9 @@ let volhistory = [];
 var state = 0;
 
 function setup() {
-    createCanvas(300, 200);
+    var canvas = createCanvas(550, 200);
+
+    canvas.parent('recorder-canvas');
 
     // Create an Audio input
     mic = new p5.AudioIn();
@@ -18,9 +20,10 @@ function setup() {
     // create an empty sound file that we will use to playback the recording
     soundFile = new p5.SoundFile();
 
-    buttonRecord = createButton('Record');
-    buttonStop = createButton('Stop');
-    buttonSave = createButton('Save');
+    
+    buttonRecord = createButton('Record').parent('recorder-panel');
+    buttonStop = createButton('Stop').parent('recorder-panel');
+    buttonSave = createButton('Save').parent('recorder-panel');
 
     buttonRecord.mousePressed(BtRecord);
 
