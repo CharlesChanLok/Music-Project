@@ -1,125 +1,149 @@
-<div class="sequencizer-wrap">
-    <div id="sequencizer"></div>
-    <div class="controls">
-        <label data-bpm="decrease">-</label>
-        <input type="text" value="120" id="bpm">
-        <label data-bpm="increase">+</label>
-        <button id="clr">clear</button>
-    </div>
-</div>
-<div>
+<div class="instrument-body container-fluid">
+    <div class="row">
+        {{!-- left hand side control --}}
+        <div class="col-12 col-xl-6">
 
-    <p>
-        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            Show Piano
-        </a>
-    </p>
-    <div class="collapse" id="collapseExample">
-        <div class="card card-body" style="background-color: black">
-            <div class="keys">
-                <div data-key="65" class="wkey">
-                    <kbd>A</kbd>
-                    <span class="sound"></span>
-                </div>
-                <div data-key="83" class="wkey">
-                    <kbd>S</kbd>
-                    <span class="sound"></span>
-                </div>
-                <div data-key="87" class="bkey" id="Fs3">
-                    <bbd>W</bbd>
-                    <span class="sound"></span>
-                </div>
-                <div data-key="68" class="wkey">
-                    <kbd>D</kbd>
-                    <span class="sound"></span>
-                </div>
-                <div data-key="69" class="bkey" id="Gs3">
-                    <bbd>E</bbd>
-                    <span class="sound"></span>
-                </div>
-                <div data-key="70" class="wkey">
-                    <kbd>F</kbd>
-                    <span class="sound"></span>
-                </div>
-                <div data-key="71" class="wkey">
-                    <kbd>G</kbd>
-                    <span class="sound"></span>
-                </div>
-                <div data-key="82" class="bkey" id="As3">
-                    <bbd>R</bbd>
-                    <span class="sound"></span>
-                </div>
-                <div data-key="72" class="wkey">
-                    <kbd>H</kbd>
-                    <span class="sound"></span>
-                </div>
-                <div data-key="89" class="bkey" id="Cs4">
-                    <bbd>Y</bbd>
-                    <span class="sound"></span>
-                </div>
-                <div data-key="74" class="wkey">
-                    <kbd>J</kbd>
-                    <span class="sound"></span>
-                </div>
-                <div data-key="85" class="bkey" id="Ds4">
-                    <bbd>U</bbd>
-                    <span class="sound"></span>
-                </div>
-                <div data-key="75" class="wkey">
-                    <kbd>K</kbd>
-                    <span class="sound"></span>
-                </div>
-                <div data-key="76" class="wkey">
-                    <kbd>L</kbd>
-                    <span class="sound"></span>
-                </div>
-                <div data-key="79" class="bkey" id="Fs4">
-                    <bbd>O</bbd>
-                    <span class="sound"></span>
-                </div>
-                <div data-key="80" class="bkey" id="Gs4">
-                    <bbd>P</bbd>
-                    <span class="sound"></span>
-                </div>
-                <div data-key="186" class="wkey">
-                    <kbd>;</kbd>
-                    <span class="sound"></span>
-                </div>
-                <div data-key="219" class="bkey" id="As4">
-                    <bbd>[</bbd>
-                    <span class="sound"></span>
-                </div>
-                <div data-key="222" class="wkey">
-                    <kbd>'</kbd>
-                    <span class="sound"></span>
-                </div>
-                <div data-key="220" class="wkey">
-                    <kbd>\</kbd>
-                    <span class="sound"></span>
+            {{!-- recorder control --}}
+            <div class="instrument-frame">
+                <div class="container">
+                    <div class="row recorder-container">
+                        <div class="col-12" id="recorder-panel"></div>
+                        <div class="col-12" id="recorder-canvas"></div>
+                    </div>
                 </div>
             </div>
-            <audio data-key="65" src="https://jnelson180.github.io/piano/f3.mp3"></audio>
-            <audio data-key="83" src="https://jnelson180.github.io/piano/g3.mp3"></audio>
-            <audio data-key="87" src="https://jnelson180.github.io/piano/fs3.mp3"></audio>
-            <audio data-key="68" src="https://jnelson180.github.io/piano/a3.mp3"></audio>
-            <audio data-key="69" src="https://jnelson180.github.io/piano/gs3.mp3"></audio>
-            <audio data-key="70" src="https://jnelson180.github.io/piano/b3.mp3"></audio>
-            <audio data-key="71" src="https://jnelson180.github.io/piano/c4.mp3"></audio>
-            <audio data-key="82" src="https://jnelson180.github.io/piano/as3.mp3"></audio>
-            <audio data-key="72" src="https://jnelson180.github.io/piano/d4.mp3"></audio>
-            <audio data-key="89" src="https://jnelson180.github.io/piano/cs4.mp3"></audio>
-            <audio data-key="74" src="https://jnelson180.github.io/piano/e4.mp3"></audio>
-            <audio data-key="85" src="https://jnelson180.github.io/piano/ds4.mp3"></audio>
-            <audio data-key="75" src="https://jnelson180.github.io/piano/f4.mp3"></audio>
-            <audio data-key="76" src="https://jnelson180.github.io/piano/g4.mp3"></audio>
-            <audio data-key="79" src="https://jnelson180.github.io/piano/fs4.mp3"></audio>
-            <audio data-key="80" src="https://jnelson180.github.io/piano/gs4.mp3"></audio>
-            <audio data-key="186" src="https://jnelson180.github.io/piano/a4.mp3"></audio>
-            <audio data-key="219" src="https://jnelson180.github.io/piano/as4.mp3"></audio>
-            <audio data-key="222" src="https://jnelson180.github.io/piano/b4.mp3"></audio>
-            <audio data-key="220" src="https://jnelson180.github.io/piano/c5.mp3"></audio>
+
+
+
+            {{!-- piano control --}}
+            <div class="instrument-frame piano-container">
+                <div class="card card-body" style="background-color: rgba(0, 0, 0, 0); border: 0;">
+                    <div class="keys">
+                        <div data-key="65" class="wkey">
+                            <kbd>A</kbd>
+                            <span class="sound"></span>
+                        </div>
+                        <div data-key="83" class="wkey">
+                            <kbd>S</kbd>
+                            <span class="sound"></span>
+                        </div>
+                        <div data-key="87" class="bkey" id="Fs3">
+                            <bbd>W</bbd>
+                            <span class="sound"></span>
+                        </div>
+                        <div data-key="68" class="wkey">
+                            <kbd>D</kbd>
+                            <span class="sound"></span>
+                        </div>
+                        <div data-key="69" class="bkey" id="Gs3">
+                            <bbd>E</bbd>
+                            <span class="sound"></span>
+                        </div>
+                        <div data-key="70" class="wkey">
+                            <kbd>F</kbd>
+                            <span class="sound"></span>
+                        </div>
+                        <div data-key="71" class="wkey">
+                            <kbd>G</kbd>
+                            <span class="sound"></span>
+                        </div>
+                        <div data-key="82" class="bkey" id="As3">
+                            <bbd>R</bbd>
+                            <span class="sound"></span>
+                        </div>
+                        <div data-key="72" class="wkey">
+                            <kbd>H</kbd>
+                            <span class="sound"></span>
+                        </div>
+                        <div data-key="89" class="bkey" id="Cs4">
+                            <bbd>Y</bbd>
+                            <span class="sound"></span>
+                        </div>
+                        <div data-key="74" class="wkey">
+                            <kbd>J</kbd>
+                            <span class="sound"></span>
+                        </div>
+                        <div data-key="85" class="bkey" id="Ds4">
+                            <bbd>U</bbd>
+                            <span class="sound"></span>
+                        </div>
+                        <div data-key="75" class="wkey">
+                            <kbd>K</kbd>
+                            <span class="sound"></span>
+                        </div>
+                        <div data-key="76" class="wkey">
+                            <kbd>L</kbd>
+                            <span class="sound"></span>
+                        </div>
+                        <div data-key="79" class="bkey" id="Fs4">
+                            <bbd>O</bbd>
+                            <span class="sound"></span>
+                        </div>
+                        <div data-key="80" class="bkey" id="Gs4">
+                            <bbd>P</bbd>
+                            <span class="sound"></span>
+                        </div>
+                        <div data-key="186" class="wkey">
+                            <kbd>;</kbd>
+                            <span class="sound"></span>
+                        </div>
+                        <div data-key="219" class="bkey" id="As4">
+                            <bbd>[</bbd>
+                            <span class="sound"></span>
+                        </div>
+                        <div data-key="222" class="wkey">
+                            <kbd>'</kbd>
+                            <span class="sound"></span>
+                        </div>
+                        <div data-key="220" class="wkey">
+                            <kbd>\</kbd>
+                            <span class="sound"></span>
+                        </div>
+                    </div>
+                    <audio data-key="65" src="https://jnelson180.github.io/piano/f3.mp3"></audio>
+                    <audio data-key="83" src="https://jnelson180.github.io/piano/g3.mp3"></audio>
+                    <audio data-key="87" src="https://jnelson180.github.io/piano/fs3.mp3"></audio>
+                    <audio data-key="68" src="https://jnelson180.github.io/piano/a3.mp3"></audio>
+                    <audio data-key="69" src="https://jnelson180.github.io/piano/gs3.mp3"></audio>
+                    <audio data-key="70" src="https://jnelson180.github.io/piano/b3.mp3"></audio>
+                    <audio data-key="71" src="https://jnelson180.github.io/piano/c4.mp3"></audio>
+                    <audio data-key="82" src="https://jnelson180.github.io/piano/as3.mp3"></audio>
+                    <audio data-key="72" src="https://jnelson180.github.io/piano/d4.mp3"></audio>
+                    <audio data-key="89" src="https://jnelson180.github.io/piano/cs4.mp3"></audio>
+                    <audio data-key="74" src="https://jnelson180.github.io/piano/e4.mp3"></audio>
+                    <audio data-key="85" src="https://jnelson180.github.io/piano/ds4.mp3"></audio>
+                    <audio data-key="75" src="https://jnelson180.github.io/piano/f4.mp3"></audio>
+                    <audio data-key="76" src="https://jnelson180.github.io/piano/g4.mp3"></audio>
+                    <audio data-key="79" src="https://jnelson180.github.io/piano/fs4.mp3"></audio>
+                    <audio data-key="80" src="https://jnelson180.github.io/piano/gs4.mp3"></audio>
+                    <audio data-key="186" src="https://jnelson180.github.io/piano/a4.mp3"></audio>
+                    <audio data-key="219" src="https://jnelson180.github.io/piano/as4.mp3"></audio>
+                    <audio data-key="222" src="https://jnelson180.github.io/piano/b4.mp3"></audio>
+                    <audio data-key="220" src="https://jnelson180.github.io/piano/c5.mp3"></audio>
+                </div>
+            </div>
+        </div>
+
+
+        {{!-- right hand side control --}}
+        <div class="col-12 col-xl-6">
+
+            {{!-- sequencer control () --}}
+            <div class="instrument-frame sequencer-container">
+                <div class="sequencizer-wrap">
+                    <div id="sequencizer"></div>
+                    <div class="controls">
+                        <label data-bpm="decrease">-</label>
+                        <input type="text" value="120" id="bpm">
+                        <label data-bpm="increase">+</label>
+                        <button id="clear" onclick="jqclear()">clear</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</div>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.5/howler.min.js"></script>
