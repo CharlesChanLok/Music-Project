@@ -1,15 +1,35 @@
-
-<a href="/auth/logout">Logout</a>
-
 <div class="instrument-body container-fluid">
+    <div class="header">
+        <div class="header-left">
+            <div class="header-title">
+                <p>MusicMixer</p>
+            </div>
+            <div class="header-menu">
+                    <span><a href="#">Instrument</a></span>
+                    <span><a href="#">Library</a></span>
+            </div>
+        </div>
+
+        <div class="header-right">
+            <div class="header-logout">
+                <a href="/auth/logout">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-underline"></div>
+
     <div class="row">
         {{!-- left hand side control --}}
         <div class="col-12 col-xl-6">
 
             {{!-- recorder control --}}
-            <div class="instrument-frame">
+            <div class="instrument-frame recorder-container">
+                <div class="function-name">
+                    <p>Recorder</p>
+                </div>
                 <div class="container">
-                    <div class="row recorder-container">
+                    <div class="row">
                         <div class="col-12" id="recorder-panel"></div>
                         <div class="col-12" id="recorder-canvas"></div>
                     </div>
@@ -20,6 +40,9 @@
 
             {{!-- piano control --}}
             <div class="instrument-frame piano-container">
+                <div class="function-name">
+                    <p>Piano</p>
+                </div>
                 <div class="card card-body" style="background-color: rgba(0, 0, 0, 0); border: 0;">
                     <div class="keys">
                         <div data-key="65" class="wkey">
@@ -133,13 +156,16 @@
 
             {{!-- sequencer control () --}}
             <div class="instrument-frame sequencer-container">
+                <div class="function-name">
+                    <p>Sequencer</p>
+                </div>
                 <div class="sequencizer-wrap">
                     <div id="sequencizer"></div>
                     <div class="controls">
                         <label data-bpm="decrease">-</label>
                         <input type="text" value="120" id="bpm">
                         <label data-bpm="increase">+</label>
-                        <button id="jqclear" onclick="jqclear()">clear</button>
+                        <div class="clearButton"><button id="jqclear" onclick="jqclear()">Clear</button></div>
                     </div>
                 </div>
             </div>

@@ -1,23 +1,107 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-content: center;
+}
+
+.header-left {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+}
+
+.header-right {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+}
+
+.header-underline {
+    height: 1.5px;
+    background-color: black; 
+    margin: 5px 2px;
+}
+
+.header-title {
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 30px;
+    padding: 5px;
+}
+
+.header-menu a , .header-logout a {
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 20px;
+    padding: 5px;
+    color: gray;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+.function-name {
+    color: white;
+    padding: 10px 20px;
+    font-family: 'Lobster', cursive;
+    font-size: 40px;
+}
+
 .instrument-body { 
     background-image: url('../images/bg-02.jpg');
-    background-size: cover;
-    width: 100%;
-    position: fixed;
-    min-height: 100vh;
+    background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	background-attachment: fixed;
+	height: 100vh;
 }
 
 .instrument-frame {
-    background-color: rgba(40, 40, 40, 0.8);
+    background-color: rgba(40, 40, 40, 0.9);
     margin-top: 10px;
+    border-radius: 10px;
+}
+
+.recorder-container {
+    position: relative;
+    height: 350px;
 }
 
 .piano-container {
     position: relative;
-    height: 275px;
+    height: 350px;
 }
 
 .sequencer-container {
     position: relative;
     min-width: 650px;
+    padding-bottom: 30px;
 }
 
+.clearButton {
+    margin-top: 10px;
+    margin-left: 50px;
+}
+
+button {
+    font-size: 12px;
+    font-family: 'Nanum Gothic', sans-serif;
+    color: orange;
+    border: 1.5px solid orange;
+    background-color: rgba(40, 40, 40, 0.9); 
+    margin: 3px;
+}
