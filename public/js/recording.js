@@ -75,8 +75,14 @@ function BtStop() {
 }
 
 function BtSave() {
-    saveSound(soundFile, 'mySound.wav');
-    background(0)
+    var input = prompt("Please enter file name:", "Harry Potter");
+    if (input == null || input == "") {
+        alert("Fuck you! File name!")
+        return
+    }   
+        saveSound(soundFile, 'sound.wav');
+        background(0);
+     
 }
 
 
