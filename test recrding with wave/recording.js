@@ -75,7 +75,7 @@ function BtStop() {
 }
 
 function BtSave() {
-  saveSound(soundFile, 'mySound.wav');
+  saveSound(soundFile, 'mySound2.wav');
   background(0)
 }
 

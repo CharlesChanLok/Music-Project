@@ -11,6 +11,7 @@ const authRouters = require('./routers/auth-routers');
 const localAuthRouters = require('./routers/local-auth-routers');
 const profileRouters = require('./routers/profile-routers');
 const instrumentRouters = require('./routers/instrument-routers');
+const saveSongRouters = require('./routers/save-song-routers');
 //passport setup
 const passportSetup = require('./config/strategies/google-strategy');
 const passport = require('passport');
@@ -55,6 +56,7 @@ app.use('/profile', profileRouters);
 app.use('/auth', authRouters);
 app.use('/local', localAuthRouters)
 app.use('/', instrumentRouters);
+app.use(saveSongRouters);
 
 app.get('/', (req, res) => {
     res.render('home', {user: req.user});
