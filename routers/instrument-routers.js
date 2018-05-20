@@ -8,7 +8,7 @@ function isAuthenticated(req, res, next) {
 }
 
 
-router.get('/instrument', isAuthenticated, (req, res) => {
+router.get('/instrument', (req, res) => {
     res.render('instrument', { layout: "instrument" });
 })
 module.exports = router;

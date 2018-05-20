@@ -4,17 +4,17 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const express = require('express');
 //Session
-const session = require('express-session');
-const RedisStore = require('connect-redis')(session);
+// const session = require('express-session');
+// const RedisStore = require('connect-redis')(session);
 //Router
-const authRouters = require('./routers/auth-routers');
-const localAuthRouters = require('./routers/local-auth-routers');
+// const authRouters = require('./routers/auth-routers');
+// const localAuthRouters = require('./routers/local-auth-routers');
 const profileRouters = require('./routers/profile-routers');
 const instrumentRouters = require('./routers/instrument-routers');
 const saveSongRouters = require('./routers/save-song-routers');
 //passport setup
-const passportSetup = require('./config/strategies/google-strategy');
-const passport = require('passport');
+// const passportSetup = require('./config/strategies/google-strategy');
+// const passport = require('passport');
 
 var exphbs = require('express-handlebars');
 
@@ -25,7 +25,7 @@ const NODE_ENV = process.env.NODE_ENV || 'development'
 
 const knexFile = require('./knexfile')[NODE_ENV]
 console.log(knexFile);
-const knex = require('knex')(knexFile)
+// const knex = require('knex')(knexFile)
 
 app.engine('.hbs', exphbs({
     extname: '.hbs',
@@ -39,27 +39,27 @@ app.use(express.static('public'));
 
 
 //session
-app.use(session({
-    store: new RedisStore(),
-    secret: process.env.SESSION_SECRET,
-    cookie: { "path": '/', "httpOnly": true, "secure": false,  "maxAge": null },
-    resave: false,
-    saveUninitialized: false
-}))
+// app.use(session({
+//     store: new RedisStore(),
+//     secret: process.env.SESSION_SECRET,
+//     cookie: { "path": '/', "httpOnly": true, "secure": false,  "maxAge": null },
+//     resave: false,
+//     saveUninitialized: false
+// }))
 
 
-app.use(passport.initialize())
-app.use(passport.session())
+// app.use(passport.initialize())
+// app.use(passport.session())
 
 //set up routes
-app.use('/profile', profileRouters);
-app.use('/auth', authRouters);
-app.use('/local', localAuthRouters)
+// app.use('/profile', profileRouters);
+// app.use('/auth', authRouters);
+// app.use('/local', localAuthRouters)
 app.use('/', instrumentRouters);
 app.use(saveSongRouters);
 
 app.get('/', (req, res) => {
-    res.render('home', {user: req.user});
+    res.render('instrument', { layout: "instrument" });
 })
 
 app.get('/error', (req, res) => {

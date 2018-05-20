@@ -78,7 +78,7 @@ function BtStop() {
 }
 
 function BtSave() {
-    var input = prompt("Please enter file name:", "Harry Potter");
+    var input = prompt("Please enter file name:", "Untitled");
     if (input == null || input == "") {
         alert("File name is required!")
         return
